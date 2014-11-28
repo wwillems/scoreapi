@@ -14,6 +14,9 @@ mongoose.connect('mongodb://scoreapi:scoreapipw@ds055690.mongolab.com:55690/scor
 // Create our Express application
 var app = express();
 
+app.set('port', (process.env.PORT || 3000))
+app.use(express.static(__dirname + '/public'))
+
 // Use the body-parser package in our application
 app.use(bodyParser.urlencoded({
   extended: true
