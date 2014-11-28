@@ -1,7 +1,8 @@
 {
-  "name": "beerlocker",
+  "name": "scoreapi",
   "main": "server.js",
   "dependencies": {
-    "express": "~4.1.1"
+    "express": "~4.1.1",
+    "mongoose": "*"
   }
 }
