@@ -5,6 +5,7 @@
     "express": "~4.1.1",
     "mongoose": "*",
     "body-parser": "*",
-    "passport": "*"
+    "passport": "*",
+    "bcrypt-nodejs": "*"
   }
 }
