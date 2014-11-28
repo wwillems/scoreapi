@@ -6,6 +6,7 @@
     "mongoose": "*",
     "body-parser": "*",
     "passport": "*",
-    "bcrypt-nodejs": "*"
+    "bcrypt-nodejs": "*",
+    "passport-http": "*"
   }
 }
