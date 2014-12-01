@@ -25,6 +25,33 @@ app.use(bodyParser.urlencoded({
 // Use the passport package in our application
 app.use(passport.initialize());
 
+app.use(function(req, res, next) {
+  var headers = {
+    'Cache-Control' : 'max-age:120'   // cache for 2m (in varnish and client)
+  };
+
+  // allowed origin?
+  if (!_.isUndefined(req.headers.origin)) {
+    // validate (primary, secondary, local-dev)
+    if (req.headers.origin.match(/domain\.com/) 
+    || req.headers.origin.match(/secondary\.domain\.com/) 
+    || req.headers.origin.match(/domain\.local/)) {
+      headers = _.extend(headers, {
+        'Access-Control-Allow-Origin': req.headers.origin
+      , 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+      , 'Access-Control-Allow-Headers': 'Content-Type, X-Requested-With, X-PINGOTHER'
+      , 'Access-Control-Max-Age': 86400   // 1 day
+      });
+    }
+  }
+
+  _.each(headers, function(value, key) {
+    res.setHeader(key, value);
+  });
+
+  next();
+});
+
 // Create our Express router
 var router = express.Router();
 
