@@ -33,16 +33,16 @@ app.use(function(req, res, next) {
   // allowed origin?
   if (!_.isUndefined(req.headers.origin)) {
     // validate (primary, secondary, local-dev)
-    if (req.headers.origin.match(/domain\.com/) 
-    || req.headers.origin.match(/secondary\.domain\.com/) 
-    || req.headers.origin.match(/domain\.local/)) {
+    // if (req.headers.origin.match(/domain\.com/) 
+    // || req.headers.origin.match(/secondary\.domain\.com/) 
+    // || req.headers.origin.match(/domain\.local/)) {
       headers = _.extend(headers, {
         'Access-Control-Allow-Origin': req.headers.origin
       , 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
       , 'Access-Control-Allow-Headers': 'Content-Type, X-Requested-With, X-PINGOTHER'
       , 'Access-Control-Max-Age': 86400   // 1 day
       });
-    }
+    // }
   }
 
   _.each(headers, function(value, key) {
