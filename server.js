@@ -32,8 +32,6 @@ var router = express.Router();
 router.route('/scores')
   .post(authController.isAuthenticated, scoreController.postScores)
   .get(authController.isAuthenticated, scoreController.getScores);
-  //.post(scoreController.postScores)
-  //.get(scoreController.getScores);
 
 // Create endpoint handlers for /scores/:score_id
 router.route('/scores/:score_id')
