@@ -22,6 +22,9 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Create our Express router
 var router = express.Router();
 
