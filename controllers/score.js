@@ -6,6 +6,8 @@ exports.postScores = function(req, res) {
   // Create a new instance of the Score model
   var score = new Score();
 
+  
+
   // Set the score properties that came from the POST data
   score.user = req.body.user;
   score.level = req.body.level;
@@ -17,7 +19,8 @@ exports.postScores = function(req, res) {
     if (err)
       res.send(err);
 
-    res.json({ message: 'Score added to the store.', data: score });
+//    res.json({ message: 'Score added to the store.', data: score });
+    res.json({ message: 'Score added to the store...', data: JSON.stringify(req) });
   });
 };
 
