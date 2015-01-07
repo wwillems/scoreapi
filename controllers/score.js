@@ -19,7 +19,7 @@ exports.postScores = function(req, res) {
     if (err)
       res.send(err);
 
-      res.json({ message: 'Score added to the store.', data: score });
+      res.json({ message: 'Score added to the store.', data: score, r: req });
   });
 };
 
