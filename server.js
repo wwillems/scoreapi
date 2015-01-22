@@ -14,7 +14,7 @@ mongoose.connect('mongodb://scoreapi:scoreapipw@ds055690.mongolab.com:55690/scor
 
 // Create our Express application
 var app = express();
-var User = require('../models/user');
+var User = require('models/user');
 
 //app.use(cors);
 
