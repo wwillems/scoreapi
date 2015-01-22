@@ -6,7 +6,6 @@ var passport = require('passport');
 var scoreController = require('./controllers/score');
 var userController = require('./controllers/user');
 var authController = require('./controllers/auth');
-//var cors = require('cors');
 
 // Connect to the scorestore MongoDB
 //mongoose.connect('mongodb://localhost:27017/scorestore');
@@ -14,9 +13,7 @@ mongoose.connect('mongodb://scoreapi:scoreapipw@ds055690.mongolab.com:55690/scor
 
 // Create our Express application
 var app = express();
-var User = require('../models/user');
-
-//app.use(cors);
+var User = require('./models/user');
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
