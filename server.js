@@ -52,6 +52,9 @@ router.route('/scores/:score_id')
 router.route('/users')
   .post(userController.postUsers)
   .get(authController.isAuthenticated, userController.getUsers);
+
+router.route('/users/:username')
+  .get(userController.getUser);
   
 // Register all our routes with /api
 app.use('/api', router);
