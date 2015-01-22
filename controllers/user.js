@@ -25,3 +25,13 @@ exports.getUsers = function(req, res) {
     res.json(users);
   });
 };
+
+// Create endpoint /api/user for GET
+exports.getUser = function(req, res) {
+  User.findOne({ username: username }, function(err, user) {
+    if (err)
+      res.send(err);
+
+    res.json(user);
+  });
+};
