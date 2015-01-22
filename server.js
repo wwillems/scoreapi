@@ -53,8 +53,19 @@ router.route('/users')
   .post(userController.postUsers)
   .get(authController.isAuthenticated, userController.getUsers);
 
-router.route('/users/:username')
-  .get(userController.getUser);
+// Create a new route with the /users/:username prefix
+var userRoute = router.route('/users/:username');
+
+// Create endpoint /api/users/:username for GET
+userRoute.get(function(req, res) {
+  // Use the User model to find a specific user
+  User.findOne({ username: req.params.username }, function(err, user) {
+    if (err)
+      res.send(err);
+
+    res.json(user);
+  });
+});
   
 // Register all our routes with /api
 app.use('/api', router);
