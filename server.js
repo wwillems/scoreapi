@@ -76,7 +76,7 @@ userRoute.post(function(req, res) {
   });
 });
 
-router.route('/users/user_id')
+router.route('/users/:user_id')
   .delete(authController.isAuthenticated, userController.deleteUser);
   
 // Register all our routes with /api
