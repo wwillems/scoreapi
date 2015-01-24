@@ -60,16 +60,10 @@ userRoute.get(function(req, res) {
   User.findOne({ username: req.params.username }, function(err, user) {
     if (err)
       res.send(err);
-
-    console.log('>>>> user: ' + JSON.stringify(user));
-
-    user.verifyPassword(req.params.password, function(err, isMatch) {
-      console.log('>>>> isMatch: ' + isMatch);
-      res.json(isMatch);
-    })
-    //res.json(user);
+    res.json(user);
   });
-});
+}).
+.delete(authController.isAuthenticated, userController.deleteUser);
   
 userRoute.post(function(req, res) {
   // Use the User model to find a specific user
@@ -83,7 +77,6 @@ userRoute.post(function(req, res) {
       console.log('>>>> isMatch: ' + isMatch);
       res.json(isMatch);
     })
-    //res.json(user);
   });
 });
 
