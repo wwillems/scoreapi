@@ -64,23 +64,21 @@ userRoute.get(function(req, res) {
       });
     });
 
-userRoute.delete(authController.isAuthenticated, userController.deleteUser);
-  
 userRoute.post(function(req, res) {
   // Use the User model to find a specific user
   User.findOne({ username: req.body.username }, function(err, user) {
     if (err)
       res.send(err);
 
-    console.log('>>>> user: ' + JSON.stringify(user));
-
     user.verifyPassword(req.body.password, function(err, isMatch) {
-      console.log('>>>> isMatch: ' + isMatch);
       res.json(isMatch);
     })
   });
 });
 
+router.route('/users/user_id')
+  .delete(authController.isAuthenticated, userController.deleteUser);
+  
 // Register all our routes with /api
 app.use('/api', router);
 
