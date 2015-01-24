@@ -67,7 +67,7 @@ userRoute.get(function(req, res) {
       console.log('>>>> isMatch: ' + isMatch);
       res.json(isMatch);
     })
-    res.json(user);
+    //res.json(user);
   });
 });
   
