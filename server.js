@@ -63,7 +63,7 @@ userRoute.get(function(req, res) {
 
     console.log('>>>> user: ' + JSON.stringify(user));
 
-    user.verifyPassword('test', function(err, isMatch) {
+    user.verifyPassword(req.params.password, function(err, isMatch) {
       console.log('>>>> isMatch: ' + isMatch);
       res.json(isMatch);
     })
@@ -71,6 +71,22 @@ userRoute.get(function(req, res) {
   });
 });
   
+userRoute.post(function(req, res) {
+  // Use the User model to find a specific user
+  User.findOne({ username: req.params.username }, function(err, user) {
+    if (err)
+      res.send(err);
+
+    console.log('>>>> user: ' + JSON.stringify(user));
+
+    user.verifyPassword(req.params.password, function(err, isMatch) {
+      console.log('>>>> isMatch: ' + isMatch);
+      res.json(isMatch);
+    })
+    //res.json(user);
+  });
+});
+
 // Register all our routes with /api
 app.use('/api', router);
 
