@@ -28,7 +28,7 @@ exports.getUsers = function(req, res) {
 };
 
 // Create endpoint /api/users/:user_id for DELETE
-exports.deleteScore = function(req, res) {
+exports.deleteUser = function(req, res) {
   // Use the User model to find a specific score and remove it
   User.findByIdAndRemove(req.params.score_id, function(err) {
     if (err)
