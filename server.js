@@ -60,10 +60,11 @@ userRoute.get(function(req, res) {
   User.findOne({ username: req.params.username }, function(err, user) {
     if (err)
       res.send(err);
-    User.methods.verifyPassword('test', function(err, isMatch) {
-      console.log('>>>> isMatch: ' + isMatch);
-      res.json(isMatch);
-    })
+    console.log('>>>> User: ' + JSON.stringify(User);
+    // User.methods.verifyPassword('test', function(err, isMatch) {
+    //   console.log('>>>> isMatch: ' + isMatch);
+    //   res.json(isMatch);
+    // })
     res.json(user);
   });
 });
