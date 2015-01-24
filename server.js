@@ -73,13 +73,13 @@ userRoute.get(function(req, res) {
   
 userRoute.post(function(req, res) {
   // Use the User model to find a specific user
-  User.findOne({ username: req.params.username }, function(err, user) {
+  User.findOne({ username: req.body.username }, function(err, user) {
     if (err)
       res.send(err);
 
     console.log('>>>> user: ' + JSON.stringify(user));
 
-    user.verifyPassword(req.params.password, function(err, isMatch) {
+    user.verifyPassword(req.body.password, function(err, isMatch) {
       console.log('>>>> isMatch: ' + isMatch);
       res.json(isMatch);
     })
