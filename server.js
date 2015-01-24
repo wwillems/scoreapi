@@ -62,6 +62,7 @@ userRoute.get(function(req, res) {
       res.send(err);
     User.verifyPassword('test', function(err, isMatch) {
       console.log('>>>> isMatch: ' + isMatch);
+      res.json(isMatch);
     })
     res.json(user);
   });
