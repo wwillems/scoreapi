@@ -61,11 +61,12 @@ userRoute.get(function(req, res) {
     if (err)
       res.send(err);
 
-    // User.methods.verifyPassword('test', function(err, isMatch) {
-    //   console.log('>>>> isMatch: ' + isMatch);
-    //   res.json(isMatch);
-    // })
     console.log('>>>> user: ' + JSON.stringify(user));
+
+    user.methods.verifyPassword('test', function(err, isMatch) {
+      console.log('>>>> isMatch: ' + isMatch);
+      res.json(isMatch);
+    })
     res.json(user);
   });
 });
