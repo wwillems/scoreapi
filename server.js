@@ -55,16 +55,16 @@ router.route('/users')
 var userRoute = router.route('/users/:username');
 
 // Create endpoint /api/users/:username for GET
-userRoute
-  .get(function(req, res) {
+userRoute.get(function(req, res) {
       // Use the User model to find a specific user
       User.findOne({ username: req.params.username }, function(err, user) {
         if (err)
           res.send(err);
         res.json(user);
       });
-    })
-  .delete(authController.isAuthenticated, userController.deleteUser);
+    });
+
+userRoute.delete(authController.isAuthenticated, userController.deleteUser);
   
 userRoute.post(function(req, res) {
   // Use the User model to find a specific user
