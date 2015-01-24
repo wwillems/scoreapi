@@ -63,7 +63,7 @@ userRoute.get(function(req, res) {
 
     console.log('>>>> user: ' + JSON.stringify(user));
 
-    user.methods.verifyPassword('test', function(err, isMatch) {
+    user.verifyPassword('test', function(err, isMatch) {
       console.log('>>>> isMatch: ' + isMatch);
       res.json(isMatch);
     })
